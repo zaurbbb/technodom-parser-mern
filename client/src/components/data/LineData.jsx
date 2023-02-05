@@ -1,21 +1,28 @@
 import React from "react";
 import {
-    ArcElement,
+    CategoryScale,
     Chart as ChartJS,
+    Filler,
     Legend,
+    LinearScale,
+    LineElement,
+    PointElement,
     Title,
     Tooltip,
 } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
-    ArcElement,
-    Tooltip,
-    Legend,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
     Title,
+    Tooltip,
+    Filler,
+    Legend
 );
-
-const ChartData = ({ data, dataKey }) => {
+const LineData = ({ data, dataKey }) => {
     let dataKeyCapitalized = dataKey.charAt(0).toUpperCase() + dataKey.slice(1);
     let chartText = dataKeyCapitalized + "";
 
@@ -23,7 +30,7 @@ const ChartData = ({ data, dataKey }) => {
         responsive: true,
         plugins: {
             legend: {
-                position: "top",
+                position: 'top',
             },
             title: {
                 display: true,
@@ -33,11 +40,11 @@ const ChartData = ({ data, dataKey }) => {
     };
 
     return (
-        <Pie
+        <Line
             data={data}
             options={options}
         />
-    );
-};
+    )
+}
 
-export default ChartData;
+export default LineData;

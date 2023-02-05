@@ -10,7 +10,6 @@ const technoDomCategories = {
     "computers": "noutbuki-i-komp-jutery/komp-jutery-i-monitory/stacionarnye-pk",
     "audio": "tv-audio-foto-video/audio-tehnika/akustika",
     "cameras": "fototehnika-i-kvadrokoptery/jekshn-kamery-i-aksessuary",
-    "digital": "tv-audio-foto-video/cifrovoe-sputnikovoe-tv",
     "fridges": "bytovaja-tehnika/hranenie-produktov-i-napitkov/holodil-niki",
     "games": "vsjo-dlja-gejmerov/igry-dlja-pristavok/igry-playstation-4",
     "mouses": "noutbuki-i-komp-jutery/komp-juternye-aksessuary/myshi",
@@ -32,20 +31,15 @@ const technoDomCategories = {
     "mixers": "tehnika-dlja-kuhni/obrabotka-produktov/miksery",
     "meat grinders": "tehnika-dlja-kuhni/obrabotka-produktov/mjasorubki",
     "coffee machines": "tehnika-dlja-kuhni/prigotovlenie-kofe/kofemashiny",
+    "cleaners": "catalog/bytovaja-tehnika/uhod-za-domom/pylesosy",
 }
 
 class PostController {
-    async create() {
-        // try {
-        //     const post = await PostService.create(req.body);
-        //     res.json(post);
-        // } catch (e) {
-        //     res.status(500).json(e);
-        // }
+    async create(req, res) {
         try {
             const post = await PostService.create(STORE_URL, technoDomCategories);
             console.log("parsing and adding to DB finished");
-            return post;
+            return res.json(post);
         } catch (e) {
             console.log(e.message);
         }

@@ -2,10 +2,13 @@ import React, {
     useEffect,
     useState
 } from "react";
-import ViewData from "./components/ViewData/ViewData";
+import MainPage from "./components/pages/MainPage/MainPage";
 
 import API from "./api/api";
-import SectionLoader from "./components/SectionLoader/SectionLoader";
+
+import SectionLoader from "./components/loader/SectionLoader/SectionLoader";
+
+import './App.css';
 
 const App = () => {
     const [data, setData] = useState(null);
@@ -14,8 +17,10 @@ const App = () => {
     useEffect(() => {
         async function fetchData() {
             const res = await API.get(`/posts`);
-            console.log("res.data.length", res.data.length);
-            setData(res.data);
+            console.log("num of objects from rest api", res.data.length);
+            setData(res.data.sort((a, b) => {
+                return a.price - b.price;
+            }));
         }
 
         fetchData()
@@ -29,15 +34,15 @@ const App = () => {
 
     if (!data) return <SectionLoader />;
 
-    if (data.length === 0) return <h1>User hasn't detected any Wi-Fi yet</h1>
-
-    console.log("data", data);
+    if (data.length === 0) return <h1>There's no data</h1>
 
     return (
-        <ViewData
-            data={data}
-            setError={setError}
-        />
+        <div className="app">
+            <MainPage
+                data={data}
+                setError={setError}
+            />
+        </div>
     );
 };
 

@@ -1,0 +1,11 @@
+/*canvas {*/
+/*    height: 60% !important;*/
+/*    width: 60% !important;*/
+/*}*/
+
+.app {
+    display: flex;
+    flex-direction: column;
+    /*width: 50vw!important;*/
+    /*height: 120vh!important;*/
+}

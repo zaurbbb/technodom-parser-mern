@@ -9,11 +9,9 @@ export async function technoDomParser(URL, baseURL, category, page = 1, data = [
         let path, title, price;
         path = $(this)
             .find("a.category-page-list__item-link").attr("href");
-
         title = $(this)
             .find("[class=\"Typography ProductCardV__Title --loading Typography__Body Typography__Body_Bold\"]")
             .text();
-
         price = $(this)
             .find("[class=\"Typography ProductCardV__Price ProductCardV__Price_WithOld Typography__Subtitle\"]")
             .text()
@@ -25,7 +23,6 @@ export async function technoDomParser(URL, baseURL, category, page = 1, data = [
                 .text()
                 .replace(/[^0-9]/g, "");
         }
-
         data.push({
             link: baseURL + path,
             category,
@@ -33,7 +30,6 @@ export async function technoDomParser(URL, baseURL, category, page = 1, data = [
             price: Number(price)
         });
     });
-
     if ($(".Paginator__List-Item").length > 0) {
         page++;
         await new Promise(r => setTimeout(r, 2000));

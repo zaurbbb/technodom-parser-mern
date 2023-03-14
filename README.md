@@ -47,10 +47,7 @@ It's mandatory to install [NodeJS](https://nodejs.org/en/download/). After open 
 Now, server is running on http://localhost:5000/
 
 ### Run Front-End
-- Change directory to client
-```
- cd ..
-```
+- Open new terminal/command line. Change directory to client
 ```
  cd client
 ```
